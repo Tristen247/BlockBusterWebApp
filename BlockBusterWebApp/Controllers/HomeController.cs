@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using BlockBusterWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using BlockBuster;
 
 namespace BlockBusterWebApp.Controllers
 {
@@ -29,7 +30,8 @@ namespace BlockBusterWebApp.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Colors() 
+        //week 6
+        public IActionResult Colors()
         {
             string[] colors = { "Red", "Blue", "Yellow" };
             ViewBag.Colors = colors;
@@ -46,8 +48,15 @@ namespace BlockBusterWebApp.Controllers
         public IActionResult Hobbies()
         {
             string[] hobbies = { "Skiing and Snowboarding", "Mountain Biking", "Playing Video Games", "Watching Youtube/TV" };
-            ViewBag.Hobbies = hobbies; 
+            ViewBag.Hobbies = hobbies;
             return View();
+        }
+
+        //week 7
+        public IActionResult Movies()
+        {
+            var movieList = BlockBusterBasicFunctions.GetAllMoviesFull();
+            return View(movieList);
         }
 
     }
